@@ -5,15 +5,12 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- task: Maven@3
-  inputs:
-    mavenPomFile: 'pom.xml'
-    goals: 'clean package'
-    publishJUnitResults: false
+- script: |
+    echo "Hello DevOps" > hello.txt
 
 - task: CopyFiles@2
   inputs:
-    contents: '**/*.jar'
+    contents: '**/*.txt'
     targetFolder: '$(Build.ArtifactStagingDirectory)'
 
 - task: PublishBuildArtifacts@1
